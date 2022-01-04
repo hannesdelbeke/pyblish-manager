@@ -36,7 +36,7 @@ targets = PyblishRegisteredData(
     ui_add_mode='text')
 
 discovery_filters = PyblishRegisteredData(
-    name='discovery_filters',
+    name='discovery filters',
     add_command=pyblish.api.register_discovery_filter,
     remove_command=pyblish.api.deregister_discovery_filter,
     remove_all_command=pyblish.api.deregister_all_discovery_filters,
@@ -47,7 +47,7 @@ callbacks = PyblishRegisteredData(
     add_command=pyblish.api.register_callback,
     remove_command=pyblish.api.deregister_callback,
     remove_all_command=pyblish.api.deregister_all_callbacks,
-    list_command=pyblish.api.registered_callbacks, )
+    list_command=pyblish.api.registered_callbacks, )  # warning callbacks is a dict, not a list
 
 plugins = PyblishRegisteredData(
     name='plugins',
@@ -56,4 +56,31 @@ plugins = PyblishRegisteredData(
     remove_all_command=pyblish.api.deregister_all_plugins,
     list_command=pyblish.api.registered_plugins, )
 
-registered_data_types = [plugin_paths, hosts, targets, discovery_filters, callbacks, plugins]
+guis = PyblishRegisteredData(
+    name='guis',
+    add_command=pyblish.api.register_gui,
+    remove_command=pyblish.api.deregister_gui,
+    remove_all_command=None,
+    list_command=pyblish.api.registered_guis,
+    ui_add_mode='text')
+
+# a bit unclear how tests work atm. seems we can only have 1 registered test
+tests = PyblishRegisteredData(
+    name='tests',
+    add_command=pyblish.api.register_test,
+    remove_command=pyblish.api.deregister_test,
+    remove_all_command=None,
+    list_command=pyblish.api.registered_test,  # warning test is a single callback function, not a list
+    ui_add_mode=None)
+
+# this is technically not a registered data, but it's a convenient way to see all plugins after Pyblish ran discover
+discovered_plugins = PyblishRegisteredData(
+    name='discovered plugins',
+    add_command=None,
+    remove_command=None,  # can be done with filters after discovery
+    remove_all_command=None,
+    list_command=pyblish.api.discover,  # warning test is a single callback function, not a list
+    ui_add_mode=None)
+
+
+registered_data_types = [plugin_paths, hosts, targets, discovery_filters, callbacks, plugins, guis, tests, discovered_plugins]
