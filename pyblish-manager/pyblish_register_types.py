@@ -1,5 +1,12 @@
 import pyblish.api
 
+import sys
+def remove_path(path):
+    sys.path.remove(path)
+def add_path(path):
+    sys.path.append(path)
+def get_paths():
+    return sys.path
 
 class PyblishRegisteredData:
     def __init__(self, name, add_command, remove_command, remove_all_command, list_command, ui_add_mode=None):
@@ -82,5 +89,14 @@ discovered_plugins = PyblishRegisteredData(
     list_command=pyblish.api.discover,  # warning test is a single callback function, not a list
     ui_add_mode=None)
 
+python_paths = PyblishRegisteredData(
+    name='python path',
+    add_command=add_path,
+    remove_command=remove_path,  # can be done with filters after discovery
+    remove_all_command=None,
+    list_command=get_paths,  # warning test is a single callback function, not a list
+    ui_add_mode='browse')
 
-registered_data_types = [plugin_paths, hosts, targets, discovery_filters, callbacks, plugins, guis, tests, discovered_plugins]
+
+registered_data_types = [plugin_paths, hosts, targets, discovery_filters, callbacks, plugins, guis, tests,
+                         discovered_plugins, python_paths]
