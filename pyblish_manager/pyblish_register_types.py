@@ -8,6 +8,25 @@ def add_path(path):
 def get_paths():
     return sys.path
 
+
+from Qt import QtWidgets, QtCore, QtGui
+
+def select_items(parent, items):
+    text, ok = QtWidgets.QInputDialog.getItem(parent, 'select', '', items, 0, False)
+    data = None
+    if ok and text:
+        data = str(text)  # convert unicode to string to prevent pyblish ui crashing
+    return data
+
+def select_gui(parent):
+    items = ['pyblish_qml', 'pyblish_lite', 'pyblish_pype']
+    return select_items(parent, items)
+
+def select_host(parent):
+    items = ['maya', 'houdini', 'blender', 'nuke', 'hiero', '3dsmax']
+    return select_items(parent, items)
+
+
 class PyblishRegisteredData:
     def __init__(self, name, add_command, remove_command, remove_all_command, list_command, ui_add_mode=None):
         self.name = name
@@ -32,7 +51,7 @@ hosts = PyblishRegisteredData(
     remove_command=pyblish.api.deregister_host,
     remove_all_command=pyblish.api.deregister_all_hosts,
     list_command=pyblish.api.registered_hosts,
-    ui_add_mode='text')
+    ui_add_mode=select_host)
 
 targets = PyblishRegisteredData(
     name='targets',
@@ -69,7 +88,7 @@ guis = PyblishRegisteredData(
     remove_command=pyblish.api.deregister_gui,
     remove_all_command=None,
     list_command=pyblish.api.registered_guis,
-    ui_add_mode='text')
+    ui_add_mode=select_gui)
 
 # a bit unclear how tests work atm. seems we can only have 1 registered test
 tests = PyblishRegisteredData(
@@ -100,3 +119,4 @@ python_paths = PyblishRegisteredData(
 
 registered_data_types = [plugin_paths, hosts, targets, discovery_filters, callbacks, plugins, guis, tests,
                          discovered_plugins, python_paths]
+

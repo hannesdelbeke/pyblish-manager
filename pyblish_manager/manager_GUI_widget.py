@@ -105,6 +105,9 @@ class DataWidget(QtWidgets.QWidget):
             if path:
                 data = str(path)  # convert unicode to string to prevent pyblish ui crashing
 
+        elif self.data_type.ui_add_mode:
+            data = self.data_type.ui_add_mode(self)
+
         if data:
             self.data_type.add_command(data)
             self.refresh_scroll()
