@@ -1,7 +1,7 @@
 import sys
 import pyblish.api
 from Qt import QtWidgets, QtCore, QtGui
-from pyblish_register_types import *
+from .pyblish_register_types import *
 
 
 class DataWidget(QtWidgets.QWidget):
