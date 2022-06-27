@@ -9,12 +9,12 @@ hurray for browsing!
 
 to spawn in maya:
 ```python
-import manager_GUI_widget as w
-widget = w.make_config(qapp=False)
+from pyblish_manager import manager_GUI_widget
+widget = manager_GUI_widget.make_config(qapp=False)
 ```
 
-to spawn externally:
+to spawn externally (or in Blender): 
 ```python
-import manager_GUI_widget as w
-widget = w.make_config(qapp=True)
+from pyblish_manager import manager_GUI_widget
+widget = manager_GUI_widget.make_config(qapp=True)
 ```
