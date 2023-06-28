@@ -3,7 +3,7 @@
 
 ![gif of the tool in action](docs/pyblish_manager_demo.gif)
 
-Asimple browser to visualise your current pyblish registration state.  
+A simple browser to visualise your current pyblish registration state.  
 Great for debugging, or quickly adding new paths to test new plugins.   
 Hurray for browsing!
 
