@@ -12,3 +12,7 @@ To show the window:
 from pyblish_manager import manager_GUI_widget
 widget = manager_GUI_widget.make_config()
 ```
+
+### Thank you
+If this tool is helpfull, you can star it on the github page,  
+just click the ⭐ star button in the top-right of this page. 🙏
