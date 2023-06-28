@@ -127,6 +127,9 @@ class DataWidget(QtWidgets.QWidget):
 
 
 def make_config(discover=True, config=None, qapp=True):
+    """
+    qapp=True is legacy, not used anymore. leaving for now so it doesnt break backward compatibility
+    """
     # if discover:
     #
     #     # get all plugins from pyblish
@@ -141,9 +144,7 @@ def make_config(discover=True, config=None, qapp=True):
     #     plugins = pyblish.api.discover()
     #     # config = get_pipeline_config_from_plugins(plugins)
 
-    if qapp:
-        app = QtWidgets.QApplication(sys.argv)
-
+    app = QtWidgets.QApplication.instance() or QtWidgets.QApplication(sys.argv)
 
     m = DataWidget(plugin_paths) #QtWidgets.QWidget()
 
