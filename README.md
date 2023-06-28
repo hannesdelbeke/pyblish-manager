@@ -7,14 +7,8 @@ a simple browser to visualise your current pyblish registration state.
 great for debugging, or quickly adding new paths to test new plugins. 
 hurray for browsing!
 
-to spawn in maya:
+to spawn:
 ```python
 from pyblish_manager import manager_GUI_widget
-widget = manager_GUI_widget.make_config(qapp=False)
-```
-
-to spawn externally (or in Blender): 
-```python
-from pyblish_manager import manager_GUI_widget
-widget = manager_GUI_widget.make_config(qapp=True)
+widget = manager_GUI_widget.make_config()
 ```
