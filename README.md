@@ -3,11 +3,11 @@
 
 ![gif of the tool in action](docs/pyblish_manager_demo.gif)
 
-a simple browser to visualise your current pyblish registration state.  
-great for debugging, or quickly adding new paths to test new plugins.   
-hurray for browsing!
+Asimple browser to visualise your current pyblish registration state.  
+Great for debugging, or quickly adding new paths to test new plugins.   
+Hurray for browsing!
 
-to show the window:
+To show the window:
 ```python
 from pyblish_manager import manager_GUI_widget
 widget = manager_GUI_widget.make_config()
