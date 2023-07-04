@@ -7,6 +7,12 @@ A simple browser to visualise your current pyblish registration state.
 Great for debugging, or quickly adding new paths to test new plugins.   
 Hurray for browsing!
 
+## Install
+```bash
+python -m pip install git+https://github.com/hannesdelbeke/pyblish-manager
+```
+
+## Instructions
 To show the window:
 ```python
 from pyblish_manager import manager_GUI_widget
